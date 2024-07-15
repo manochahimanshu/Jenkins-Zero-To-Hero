@@ -7,6 +7,12 @@ pipeline {
         git branch: 'main', url: 'https://github.com/manochahimanshu/Jenkins-Zero-To-Hero.git'
       }
     }
+   stage('Prepare Environment') {
+            steps {
+                sh "chmod -R 755 java-maven-sonar-argocd-helm-k8s/spring-boot-app/JenkinsFile"
+                sh "chown -R jenkins:jenkins java-maven-sonar-argocd-helm-k8s/spring-boot-app/JenkinsFile"
+            }
+
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
